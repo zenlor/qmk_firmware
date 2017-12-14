@@ -8,7 +8,7 @@ These layouts were designed to give my aching pinkeys a break
 ### The Design
 
  - Pinkeys do less:
-   - Left q, a, z, `, _, =, [Shift], [F1] [Click], [Right Click]
+   - Left q, a, z, \`, _, =, [Shift], [F1] [Click], [Right Click]
    - Right p, ', /, |, -, +, [Shift], [F10], [F11], [F12]
  - Index fingers do more:
    - Left: r, f, v, t, g, b, &, $, !, /, (, {, <, [, [Ctrl], [Tab], [Alt], [PrintScr]
@@ -70,31 +70,31 @@ Wherever the Ergodox has keys that the Planck doesn't, whichever key would be ex
 
 ### Prose Layer
 
-▓▓▓▓▓▓▓          ▓▓▓▓▓▓
-▓qwert▓         ▓yuiop\
-▓asdfg▓         ;hjkl;'
-▓zxcvb           nm,./▓
-▓▓▓▓▓▓           ▓▓▓▓▓▓
-        ▓▓   ▓▓
-       ▓▓▓   ▓ ▓
+    ▓▓▓▓▓▓▓          ▓▓▓▓▓▓
+    ▓qwert▓         ▓yuiop\
+    ▓asdfg▓         ;hjkl;'
+    ▓zxcvb           nm,./▓
+    ▓▓▓▓▓▓           ▓▓▓▓▓▓
+            ▓▓   ▓▓
+             ▓▓▓   ▓ ▓
 
 ### Symbol Layer
 
-▓▓▓▓▓▓           ▓▓▓▓▓▓
-▓`~*&/<         >\789|\
-▓_^%$([         ])456-▓
-▓=#@!{           }123+▓
-"▓▓▓▓▓▓           0▓.▓▓
-        ▓▓   ▓▓
-       ?:▓   ▓;.
+    ▓▓▓▓▓▓           ▓▓▓▓▓▓
+    ▓`~*&/<         >\789|\
+    ▓_^%$([         ])456-▓
+    ▓=#@!{           }123+▓
+    "▓▓▓▓▓▓           0▓.▓▓
+            ▓▓   ▓▓
+           ?:▓   ▓;.
 
 
 ### Nav Layer
 
-▓▓▓▓▓▓▓          ▓▓▓▓▓▓
-▓FKEYF▓         ▓KEYFK▓
-▓mouse▓          arowE▓
-▓scrol           seekY▓
-▓▓▓▓▓▓           ▓▓▓▓▓▓
-        ▓▓   ▓▓
-       ▓▓▓   ▓▓▓
+    ▓▓▓▓▓▓▓          ▓▓▓▓▓▓
+    ▓FKEYF▓         ▓KEYFK▓
+    ▓mouse▓          arowE▓
+    ▓scrol           seekY▓
+    ▓▓▓▓▓▓           ▓▓▓▓▓▓
+            ▓▓   ▓▓
+           ▓▓▓   ▓▓▓
