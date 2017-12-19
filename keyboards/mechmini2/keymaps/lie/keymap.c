@@ -5,7 +5,7 @@
 
 // Layers
 #define _QWERTY  0
-#define _COLEMAK 1
+#define _WORKMAN 1
 #define _RAISE   2
 #define _LOWER   3
 #define _NAV     4
@@ -14,6 +14,9 @@
 #define ______ KC_TRNS
 #define __xx__ KC_TRNS
 #define XXXXXX KC_NO
+
+// Shifted keys
+#define S_INS S(KC_INS)
 
 
 // Tap Macros
@@ -33,7 +36,7 @@
 #define ADJUST MO(_ADJUST)
 
 #define QWERTY  TO(_QWERTY)
-#define COLEMAK TO(_COLEMAK)
+#define WORKMAN TO(_WORKMAN)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -55,19 +58,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /*
  * ,-----------------------------------------------------------------------------------.
- * |   Q  |   W  |   F  |   P  |   G  | CANC | BKSP |   J  |   L  |   U  |   Y  |  L   |
+ * |   Q  |   D  |   R  |   W  |   B  | CANC | BKSP |   J  |   F  |   U  |   P  |  ;   |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |   A  |   R  |   S  |   T  |   D  | TAB  | ENTER|   H  |   N  |   E  |   I  |  S   |
+ * |   A  |   S  |   H  |   T  |   G  | TAB  | ENTER|   Y  |   N  |   E  |   O  |  I   |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |   Z  |   X  |   C  |   V  |   B  |LSHIFT|RSHIFT|   K  |   M  |   ,  |   .  |  /   |
+ * |   Z  |   X  |   M  |   C  |   V  |LSHIFT|RSHIFT|   K  |   L  |   ,  |   .  |  /   |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | LCTL | LGUI | LALT |  FN3 |  SYM |   SPC/NAV   | KEYP |  FN4 | RALT | RGUI | RCTL |
  * `-----------------------------------------------------------------------------------'
  */
-[_COLEMAK] = KEYMAP_2U_SPACE_ORTHO(
-    KC_Q,    KC_W,    KC_F,    KC_P,   KC_G,  KC_GESC, KC_BSPC, KC_J,  KC_L,  KC_U,    KC_Y,    KC_SCLN ,
-    KC_A,    KC_S,    KC_D,    KC_F,   KC_G,  KC_TAB,  C_ENT,   KC_H,  KC_J,  KC_K,    KC_L,    KC_O    ,
-    KC_Z,    KC_X,    KC_C,    KC_V,   KC_B,  KC_LSPO, KC_RSPC, KC_N,  KC_M,  KC_COMM, KC_DOT,  KC_SLSH ,
+[_WORKMAN] = KEYMAP_2U_SPACE_ORTHO(
+    KC_Q,    KC_D,    KC_R,    KC_W,   KC_B,  KC_GESC, KC_BSPC, KC_J,  KC_F,  KC_U,    KC_P,    KC_SCLN ,
+    KC_A,    KC_S,    KC_H,    KC_T,   KC_G,  KC_TAB,  C_ENT,   KC_Y,  KC_N,  KC_E,    KC_O,    KC_I    ,
+    KC_Z,    KC_X,    KC_M,    KC_C,   KC_V,  KC_LSPO, KC_RSPC, KC_K,  KC_L,  KC_COMM, KC_DOT,  KC_SLSH ,
     KC_LCTL, KC_LGUI, KC_LALT, KC_ESC, LOWER,      SPCNAV,      RAISE, C_ENT, KC_RALT, KC_RGUI, KC_RCTL  ),
 
 /* ,-----------------------------------------------------------------------------------.
@@ -109,12 +112,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |Accel2|M_LEFT|M_DOWN|M_RIGH|      |      |      |      | PG_UP|PG_DOW|      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |QUERTY|COLEMK|      |      |      |     ###     |      |      |      |      |      |
+ * |QUERTY|COLEMK|      |      |      |     ###     |S+INS |      |      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_NAV] = KEYMAP_2U_SPACE_ORTHO(
     KC_ACL0, KC_WH_U, KC_BTN3, KC_WH_D, ______, RGB_TOG, RGB_MOD, ______,  KC_HOME, KC_END,  ______,   KC_PASTE ,
     KC_ACL1, KC_BTN1, KC_MS_U, KC_BTN2, ______, RGB_VAD, RGB_VAI, KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT, KC_COPY  ,
     KC_ACL2, KC_MS_L, KC_MS_D, KC_MS_R, ______, BL_TOGG, BL_INC,  ______,  KC_PGUP, KC_PGDN, ______,   ______   ,
-    QWERTY,  COLEMAK, ______,  ______,  ______,      __xx__,      ______,  ______,  ______,  ______,   ______   ),
+    QWERTY,  WORKMAN, ______,  ______,  ______,      __xx__,      S_INS,   ______,  ______,  ______,   ______   ),
 };
