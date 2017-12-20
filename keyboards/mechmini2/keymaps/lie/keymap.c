@@ -20,8 +20,13 @@
 #define C_ESC  LCTL_T(KC_ESC) // Esc, LCtrl
 #define C_ENT  LCTL_T(KC_ENT) // Enter, RCtl
 
+#define CS_Z    MT(MOD_LSFT, KC_Z)
+#define CS_SLSH MT(MOD_RSFT, KC_SLSH)
+
 // Layer Macros
 #define SPCNAV LT(_NAV, KC_SPC) // Space, layer NAV
+#define RAIS_Q LT(_RAISE, KC_Q) // Q, layer RAISE
+#define RAIS_P LT(_RAISE, KC_P) // P, layer RAISE
 
 #define RAISE  MO(_RAISE)
 #define LOWER  MO(_LOWER)
@@ -33,20 +38,20 @@
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* ,-----------------------------------------------------------------------------------.
- * |   Q  |   W  |   E  |   R  |   T  | CANC | BKSP |   Y  |   U  |   I  |   O  |   P  |
+ * |   Q  |   W  |   E  |   R  |   T  |      |      |   Y  |   U  |   I  |   O  |   P  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |   A  |   S  |   D  |   F  |   G  | TAB  |  '   |   H  |   J  |   K  |   L  |   ;  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |   Z  |   X  |   C  |   V  |   B  |LSHIFT|RSHIFT|   N  |   M  |   ,  |   .  |   /  |
+ * |   Z  |   X  |   C  |   V  |   B  |LSHFT(|RSHFT)|   N  |   M  |   ,  |   .  |   /  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | LCTL | META | LALT |  ESC |LOWER |   SPC/NAV   | RAISE| ENTER| RALT | META | RCTL |
+ * |  ESC | META | LALT | BSPC |LOWER |   SPC/NAV   | RAISE| ENTER| RALT | META | RCTL |
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTY] = KEYMAP_2U_SPACE_ORTHO(
-    KC_Q,    KC_W,    KC_E,    KC_R,   KC_T,  KC_DEL,  KC_BSPC, KC_Y,  KC_U,  KC_I,    KC_O,    KC_P    ,
-    KC_A,    KC_S,    KC_D,    KC_F,   KC_G,  KC_TAB,  C_ENT,   KC_H,  KC_J,  KC_K,    KC_L,    KC_SCLN ,
-    KC_Z,    KC_X,    KC_C,    KC_V,   KC_B,  KC_LSPO, KC_RSPC, KC_N,  KC_M,  KC_COMM, KC_DOT,  KC_SLSH ,
-    KC_LCTL, KC_LGUI, KC_LALT, KC_ESC, LOWER,      SPCNAV,      RAISE, C_ENT, KC_RALT, KC_RGUI, KC_RCTL  ),
+    RAIS_Q, KC_W,    KC_E,    KC_R,    KC_T,  KC_DEL,  KC_BSPC, KC_Y,  KC_U,   KC_I,    KC_O,    RAIS_P  ,
+    KC_A,   KC_S,    KC_D,    KC_F,    KC_G,  KC_TAB,  KC_QUOT, KC_H,  KC_J,   KC_K,    KC_L,    KC_SCLN ,
+    CS_Z,   KC_X,    KC_C,    KC_V,    KC_B,  KC_LSPO, KC_RSPC, KC_N,  KC_M,   KC_COMM, KC_DOT,  CS_SLSH ,
+    C_ESC,  KC_LGUI, KC_LALT, KC_BSPC, LOWER,      SPCNAV,      RAISE, KC_DEL, KC_RALT, KC_RGUI, C_ENT   ),
 
 /*
  * ,-----------------------------------------------------------------------------------.
