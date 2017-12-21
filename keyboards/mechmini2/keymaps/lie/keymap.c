@@ -86,7 +86,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_RAISE] = KEYMAP_2U_SPACE_ORTHO(
     KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_LCBR, KC_RCBR, KC_DLR,  KC_HASH, KC_AT,   KC_EXLM, KC_TILD ,
     KC_GRV,  KC_PERC, KC_AMPR, KC_ASTR, KC_UNDS, KC_LBRC, KC_RBRC, KC_UNDS, KC_ASTR, KC_AMPR, KC_PERC, KC_GRV  ,
-    ______,  ______,  KC_EQL,  KC_PLUS, KC_MINS, KC_LSPO, KC_RSPC, KC_MINS, KC_PLUS, KC_EQL,  ______,  ______  ,
+    KC_BSLS, ______,  KC_EQL,  KC_PLUS, KC_MINS, KC_LSPO, KC_RSPC, KC_MINS, KC_PLUS, KC_EQL,  ______,  KC_BSLS ,
     ______,  ______,  ______,  ______,  ______,        ______,     __xx__,  ______,  ______,  ______,  ______  ),
 
 /* ,-----------------------------------------------------------------------------------.
@@ -98,6 +98,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      | #### |             |      |  0   |  .   |ENTER |      |
  * `-----------------------------------------------------------------------------------'
+ *
+ *
  */
 [_LOWER] = KEYMAP_2U_SPACE_ORTHO(
     KC_F9,  KC_F10, KC_F11, KC_F12, ______, KC_VOLU, KC_VOLD, KC_LCBR, KC_7, KC_8,   KC_9,   KC_RCBR ,
@@ -121,3 +123,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_ACL2, KC_MS_L, KC_MS_D, KC_MS_R, ______, BL_TOGG, BL_INC,  ______,  KC_PGUP, KC_PGDN, ______,   ______   ,
     QWERTY,  WORKMAN, ______,  ______,  ______,      __xx__,      S_INS,   ______,  ______,  ______,   ______   ),
 };
+
+/*
+  template
+  ┌────┬────┬────┬────┬────┬────┬────┬────┬────┬────┬────┬────┐
+  │    │    │    │    │    │    │    │    │    │    │    │    │
+  ├────┼────┼────┼────┼────┼────┼────┼────┼────┼────┼────┼────┤
+  │    │    │    │    │    │    │    │    │    │    │    │    │
+  ├────┼────┼────┼────┼────┼────┼────┼────┼────┼────┼────┼────┤
+  │    │    │    │    │    │    │    │    │    │    │    │    │
+  ├────┼────┼────┼────┼────┼────┴────┼────┼────┼────┼────┼────┤
+  │    │    │    │    │    │         │    │    │    │    │    │
+  └────┴────┴────┴────┴────┴─────────┴────┴────┴────┴────┴────┘
+ */
