@@ -86,15 +86,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_RAISE] = KEYMAP_2U_SPACE_ORTHO(
     KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_LCBR, KC_RCBR, KC_DLR,  KC_HASH, KC_AT,   KC_EXLM, KC_TILD ,
     KC_GRV,  KC_PERC, KC_AMPR, KC_ASTR, KC_UNDS, KC_LBRC, KC_RBRC, KC_UNDS, KC_ASTR, KC_AMPR, KC_PERC, KC_GRV  ,
-    KC_BSLS, XXXXXX,  KC_EQL,  KC_PLUS, KC_MINS, KC_LSPO, KC_RSPC, KC_MINS, KC_PLUS, KC_EQL,  XXXXXX,  KC_BSLS ,
+    KC_BSLS, KC_CIRC, KC_EQL,  KC_PLUS, KC_MINS, KC_LSPO, KC_RSPC, KC_MINS, KC_PLUS, KC_EQL,  KC_CIRC, KC_BSLS ,
     ______,  ______,  ______,  ______,  ______,        ______,     __xx__,  ______,  ______,  ______,  ______  ),
 
 /* ,-----------------------------------------------------------------------------------.
- * |  F9  |  F10 |  F11 |  F12 |      |VOL_UP|VOL_DW|  {   |  7   |  8   |  9   |  }   |
+ * |  F9  |  F10 |  F11 |  F12 |      |VOL_UP|VOL_DW|      |  7   |  8   |  9   |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |  F5  |  F6  |  F7  |  F8  |      | PREV | NEXT |  [   |  4   |  5   |  6   |  ]   |
+ * |  F5  |  F6  |  F7  |  F8  |      | PREV | NEXT |      |  4   |  5   |  6   |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |  F1  |  F2  |  F3  |  F4  |      | STOP | PLAY |  (   |  1   |  2   |  3   |  )   |
+ * |  F1  |  F2  |  F3  |  F4  |      | STOP | PLAY |      |  1   |  2   |  3   |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      | #### |             |      |  0   |  .   |ENTER |      |
  * `-----------------------------------------------------------------------------------'
@@ -114,14 +114,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |Accel2|M_LEFT|M_DOWN|M_RIGH|      |      |      |      | PG_UP|PG_DOW|      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |QUERTY|COLEMK|      |      |      |     ###     |S+INS |      |      |      |      |
+ * |QUERTY|      |      |      |      |     ###     |S+INS |      |      |      |WORKMA|
  * `-----------------------------------------------------------------------------------'
  */
 [_NAV] = KEYMAP_2U_SPACE_ORTHO(
     KC_ACL0, KC_WH_U, KC_BTN3, KC_WH_D, XXXXXX, RGB_TOG, RGB_MOD, XXXXXX,  KC_HOME, KC_END,  XXXXXX,   KC_PASTE ,
     KC_ACL1, KC_BTN1, KC_MS_U, KC_BTN2, XXXXXX, RGB_VAD, RGB_VAI, KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT, KC_COPY  ,
     KC_ACL2, KC_MS_L, KC_MS_D, KC_MS_R, XXXXXX, BL_TOGG, BL_INC,  XXXXXX,  KC_PGUP, KC_PGDN, XXXXXX,   XXXXXX   ,
-    QWERTY,  WORKMAN, ______,  ______,  ______,      __xx__,      S_INS,   ______,  ______,  ______,   ______   ),
+    QWERTY,  ______,  ______,  ______,  ______,      __xx__,      S_INS,   ______,  ______,  ______,   WORKMAN  ),
 };
 
 /*
