@@ -1,6 +1,7 @@
-#include "ergodox_ez.h"
+#include QMK_KEYBOARD_H
 #include "debug.h"
 #include "action_layer.h"
+#include "version.h"
 
 // https://configure.ergodox-ez.com/keyboard_layouts/kbyevg
 
@@ -51,7 +52,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 |      |      | [LWR]|       | BSPC |        |      |
  *                                 `--------------------'       `----------------------'
  */
-  [BASE] = KEYMAP(
+  [BASE] = LAYOUT_ergodox(
     LCTL(KC_E),     KC_1, KC_2,  KC_3,   KC_4, KC_5, KC_LBRACKET,
     LCTL(KC_F),     KC_Q, KC_W,  KC_E,   KC_R, KC_T, KC_LCBR,
     LGUI(KC_G),     KC_A, KC_S,  KC_D,   KC_F, KC_G,
@@ -70,8 +71,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     KC_PGUP,   KC_LCTL,
     KC_PGDOWN,
-    KC_BSPACE, KC_LALT, KC_SPACE
-  ),
+    KC_BSPACE, KC_LALT, KC_SPACE),
 
 /* 1: Raise
  *
@@ -94,7 +94,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 |      |      |      |       |      |      |      |
  *                                 `--------------------'       `--------------------'
  */
-  [RAISE] = KEYMAP(
+  [RAISE] = LAYOUT_ergodox(
     KC_TRANSPARENT, KC_F1,       KC_F2,       KC_F3,   KC_F4,     KC_F5,   KC_TRANSPARENT,
     KC_TRANSPARENT, KC_EXLM,     KC_AT,       KC_UP,   KC_LCBR,   KC_RCBR, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_HASH,     KC_LEFT,     KC_DOWN, KC_RIGHT,  KC_DLR,
@@ -113,8 +113,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_LALT,        KC_SPACE
-  ),
+    KC_TRANSPARENT, KC_LALT,        KC_SPACE),
 
 /* 2: Lower
  *
@@ -137,7 +136,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 |      |      |      |       |      |      |      |
  *                                 `--------------------'       `--------------------'
  */
-  [LOWER] = KEYMAP(
+  [LOWER] = LAYOUT_ergodox(
     KC_TRANSPARENT, KC_TRANSPARENT, KC_MS_ACCEL0,   KC_MS_ACCEL1,   KC_MS_ACCEL2,   KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_MS_UP,       KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_MS_LEFT,     KC_MS_DOWN,     KC_MS_RIGHT,    KC_TRANSPARENT,
@@ -155,8 +154,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     RGB_FFA500, RGB_008000,
     RGB_800080,
-    RGB_FF0000, KC_TRANSPARENT, KC_TRANSPARENT
-  ),
+    RGB_FF0000, KC_TRANSPARENT, KC_TRANSPARENT),
 
 /* 3: Gaming Layer
  *
@@ -179,7 +177,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 |      |      |      |       |  Tab |      |      |
  *                                 `--------------------'       `--------------------'
  */
-  [GAMY] = KEYMAP(
+  [GAMY] = LAYOUT_ergodox(
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
@@ -197,21 +195,31 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     KC_M, KC_ESCAPE,
     KC_R,
-    KC_LALT, KC_SPACE, KC_F
-  ),
+    KC_LALT, KC_SPACE, KC_F),
 };
 
 const uint16_t PROGMEM fn_actions[] = {
-  [1] = ACTION_LAYER_TAP_TOGGLE(1)
+    [1] = ACTION_LAYER_TAP_TOGGLE(RAISE)                // FN1 - Momentary Layer 1 (Symbols)
 };
 
-void matrix_init_user(void) {
-#ifdef RGBLIGHT_COLOR_LAYER_0
-  rgblight_setrgb(RGBLIGHT_COLOR_LAYER_0);
-#endif
+const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
+{
+  // MACRODOWN only works in this function
+  switch(id) {
+    case 0:
+      if (record->event.pressed) {
+        SEND_STRING (QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION);
+      }
+      break;
+    case 1:
+      if (record->event.pressed) { // For resetting EEPROM
+        eeconfig_init();
+      }
+      break;
+  }
+  return MACRO_NONE;
 };
 
-// https://docs.qmk.fm/feature_macros.html
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     // Custom Macros
@@ -226,80 +234,59 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       break;
 
+    // dynamically generate these.
     case EPRM:
       if (record->event.pressed) {
         eeconfig_init();
       }
       return false;
       break;
+    case VRSN:
+      if (record->event.pressed) {
+        SEND_STRING (QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION);
+      }
+      return false;
+      break;
     case RGB_SLD:
       if (record->event.pressed) {
-        rgblight_mode(1);
-      }
-      return false;
-      break;
-
-    case RGB_FFA500:
-      if (record->event.pressed) {
         #ifdef RGBLIGHT_ENABLE
-          rgblight_enable();
           rgblight_mode(1);
-          rgblight_setrgb(0xff,0xa5,0x00);
         #endif
       }
       return false;
       break;
-
-    case RGB_008000:
-      if (record->event.pressed) {
-        #ifdef RGBLIGHT_ENABLE
-          rgblight_enable();
-          rgblight_mode(1);
-          rgblight_setrgb(0x00,0x80,0x00);
-        #endif
-      }
-      return false;
-      break;
-
-    case RGB_800080:
-      if (record->event.pressed) {
-        #ifdef RGBLIGHT_ENABLE
-          rgblight_enable();
-          rgblight_mode(1);
-          rgblight_setrgb(0x80,0x00,0x80);
-        #endif
-      }
-      return false;
-      break;
-
-    case RGB_FF0000:
-      if (record->event.pressed) {
-        #ifdef RGBLIGHT_ENABLE
-          rgblight_enable();
-          rgblight_mode(1);
-          rgblight_setrgb(0xff,0x00,0x00);
-        #endif
-      }
-      return false;
-      break;
-
   }
   return true;
 }
 
-// Layer LEDs
+// Runs just one time when the keyboard initializes.
+void matrix_init_user(void) {
+#ifdef RGBLIGHT_COLOR_LAYER_0
+  rgblight_setrgb(RGBLIGHT_COLOR_LAYER_0);
+#endif
+};
+
+// Runs constantly in the background, in a loop.
+void matrix_scan_user(void) {
+
+};
+
+// Runs whenever there is a layer state change.
 uint32_t layer_state_set_user(uint32_t state) {
+  ergodox_board_led_off();
+  ergodox_right_led_1_off();
+  ergodox_right_led_2_off();
+  ergodox_right_led_3_off();
 
-    uint8_t layer = biton32(state);
-
-    ergodox_board_led_off();
-    ergodox_right_led_1_off();
-    ergodox_right_led_2_off();
-    ergodox_right_led_3_off();
-    switch (layer) {
+  uint8_t layer = biton32(state);
+  switch (layer) {
       case 0:
         #ifdef RGBLIGHT_COLOR_LAYER_0
           rgblight_setrgb(RGBLIGHT_COLOR_LAYER_0);
+        #else
+        #ifdef RGBLIGHT_ENABLE
+          rgblight_init();
+        #endif
         #endif
         break;
       case 1:
@@ -346,12 +333,12 @@ uint32_t layer_state_set_user(uint32_t state) {
         ergodox_right_led_2_on();
         ergodox_right_led_3_on();
         #ifdef RGBLIGHT_COLOR_LAYER_7
-          rgblight_setrgb(RGBLIGHT_COLOR_LAYER_6);
+          rgblight_setrgb(RGBLIGHT_COLOR_LAYER_7);
         #endif
         break;
       default:
         break;
     }
-    return state;
 
+  return state;
 };
