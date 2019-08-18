@@ -15,10 +15,13 @@ enum layers {
     _GL,
 };
 
-enum zmacro {
-    QWERTY = SAFE_RANGE,
-    GAMING,
-};
+#define QWERTY TO(_QW)
+#define GAMING TO(_GM)
+
+// enum zmacro {
+//     QWERTY = SAFE_RANGE,
+//     GAMING,
+// };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_QW] = LAYOUT( /* Qwerty */
@@ -72,6 +75,7 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
 };
 
 
+/*
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch(keycode) {
         case QWERTY:
@@ -89,3 +93,4 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     return true;
 }
+*/
