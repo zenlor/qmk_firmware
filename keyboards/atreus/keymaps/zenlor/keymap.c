@@ -31,9 +31,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             KC_ESC, KC_TAB, KC_LGUI, KC_LSFT, KC_BSPC, KC_RCTL, KC_LALT, KC_SPC, MO(_RS), KC_MINS, KC_QUOT, KC_ENT
             ),
     [_GM] = LAYOUT( /* Gaming */
-            KC_INS, KC_HOME, KC_UP,   KC_END,  KC_PGUP,                  KC_9,   KC_4,    KC_5, KC_6, KC_7  ,
-            KC_NO,  KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN,                  KC_0,   KC_1,    KC_2, KC_3, KC_8  ,
-            KC_NO,  KC_VOLU, KC_NO,   KC_NO,   KC_B,                     KC_GRV, KC_Q,    KC_W, KC_E, KC_MINS  ,
+            KC_INS, KC_HOME, KC_UP,   KC_END,  KC_PGUP,                  KC_7,   KC_8,    KC_9, KC_0, KC_MINS  ,
+            KC_NO,  KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN,                  KC_1,   KC_2,    KC_3, KC_4, KC_5  ,
+            KC_NO,  KC_VOLU, KC_NO,   KC_NO,   KC_B,                     KC_GRV, KC_Q,    KC_W, KC_E, KC_6 ,
             QWERTY, KC_VOLD, KC_LGUI, KC_LSFT, KC_BSPC, KC_LCTL, KC_TAB, KC_SPC, MO(_GL), KC_S, KC_V, KC_F
             ),
     [_RS] = LAYOUT( /* Raise */
