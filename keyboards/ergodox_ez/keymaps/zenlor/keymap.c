@@ -11,6 +11,7 @@
 #define LOWER 2
 #define GAMY  3
 #define GAMZ  4
+#define GAMX  5
 
 // Keycodes
 enum custom_keycodes {
@@ -119,9 +120,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |      | Acc0 | Acc1 | Acc2 |      |      |           |      |      |      |      |      |      |        |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |        |      |      | MUp  |      |      |      |           |      |      | End  | Home |      |      |        |
+ * |        |      |      | MUp  |      |      |      |           |      |      | End  | Home |      |      | [GAMX] |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |      | MLft | MDwn | MRgt |      |------|           |------| Lft  | Dwn  |  Up  |  Rgt |      |        |
+ * |        |      | MLft | MDwn | MRgt |      |------|           |------| Lft  | Dwn  |  Up  |  Rgt |      | [GAMZ] |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |        |      |      |      |      |      |      |           |      |      | PgDn | PgUp |      |      | [GAMY] |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
@@ -146,7 +147,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                             KC_MS_BTN2, KC_MS_BTN1, KC_TRANSPARENT,
 
     RGB_TOG,        RGB_HUI,        RGB_HUD,        RGB_VAD,        RGB_VAI,        RGB_MOD,        RGB_SLD,
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, TO(GAMX),
                     KC_LEFT,        KC_DOWN,        KC_UP,          KC_RIGHT,       KC_TRANSPARENT, TO(GAMZ),
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, TO(GAMY),
                                     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
@@ -197,9 +198,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* 4: More Gaming Layer
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
- * |        |      |      |      |      |      |      |           | F1   |  F2  |  F3  |  F4  |  F5  |  F6  |  F7    |
+ * |        |      |      |      |      |      |      |           |  N0  |  N1  |  N2  |  N3  |  N4  |  N5  |  N6    |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |        |      |      |      |      |      |      |           |   T  |   7  |   8  |   9  |   0  |   -  |  =     |
+ * |        |      |      |      |      |      |      |           |   F  |   7  |   8  |   9  |   0  |   -  |  =     |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |        |      |      |      |      |      |------|           |------|   1  |   2  |   3  |   4  |   5  |  6     |
  * |--------+------+------+------+------+------|      |           |S-Tab |------+------+------+------+------+--------|
@@ -211,7 +212,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                        |      |      |       |  M   | Esc  |
  *                                 ,------|------|------|       |------+------+------.
  *                                 |      |      |      |       |  R   |      |      |
- *                                 |[BASE]|      |------|       |------| Spc  |  F   |
+ *                                 |[BASE]|      |------|       |------| Shift|Space |
  *                                 |      |      |      |       |  Tab |      |      |
  *                                 `--------------------'       `--------------------'
  */
@@ -225,14 +226,54 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                                                     KC_TRANSPARENT,
                                                                           TO(BASE), KC_TRANSPARENT, KC_TRANSPARENT,
 
-    KC_F1,        KC_F2,   KC_F3, KC_F4, KC_F5, KC_F6,    KC_F7,
-    KC_T,         KC_7,    KC_8,  KC_9,  KC_0,  KC_MINUS, KC_EQUAL,
+    KC_P0,        KC_P1,   KC_P2, KC_P3, KC_P4, KC_P5,    KC_P6,
+    KC_F,         KC_7,    KC_8,  KC_9,  KC_0,  KC_MINUS, KC_EQUAL,
                   KC_1,    KC_2,  KC_3,  KC_4,  KC_5,     KC_6,
     LSFT(KC_TAB), KC_TAB,  KC_Q,  KC_W,  KC_E,  KC_GRAVE, KC_R,
                            KC_Z,  KC_S,  KC_X,  KC_V,     KC_LCTL,
     KC_M, KC_ESCAPE,
     KC_C,
     KC_LALT, KC_LSHIFT, KC_SPACE),
+
+/* 5: More Gaming Layer
+ *
+ * ,--------------------------------------------------.           ,--------------------------------------------------.
+ * |        |      |      |      |      |      |      |           | F1   |  F2  |  F3  |  F4  |  F5  |  F6  |  F7    |
+ * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+ * |        |      |      |      |      |      |      |           |   T  |   7  |   8  |   9  |   0  |   -  |  =     |
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * |        |      |      |      |      |      |------|           |------|   1  |   2  |   3  |   4  |   5  |  6     |
+ * |--------+------+------+------+------+------|      |           |S-Tab |------+------+------+------+------+--------|
+ * |        |      |      |      |      |      |      |           |      | Tab  |   Q  |   W  |   E  |   R  |  T     |
+ * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+ *   |      |      |      |      |      |                                       |   A  |   S  |   D  |   F  | Ctrl |
+ *   `----------------------------------'                                       `----------------------------------'
+ *                                        ,-------------.       ,-------------.
+ *                                        |      |      |       |  M   | Esc  |
+ *                                 ,------|------|------|       |------+------+------.
+ *                                 |      |      |      |       |  R   |      |      |
+ *                                 |[BASE]|      |------|       |------| Shift|Space |
+ *                                 |      |      |      |       |  Z   |      |      |
+ *                                 `--------------------'       `--------------------'
+ */
+  [GAMX] = LAYOUT_ergodox(
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+                                                                                    KC_TRANSPARENT, KC_TRANSPARENT,
+                                                                                                    KC_TRANSPARENT,
+                                                                          TO(BASE), KC_TRANSPARENT, KC_TRANSPARENT,
+
+    KC_F1,  KC_F2,    KC_F3, KC_F4, KC_F5, KC_F6,    KC_F7,
+    KC_T,   KC_7,     KC_8,  KC_9,  KC_0,  KC_MINUS, KC_EQUAL,
+            KC_1,     KC_2,  KC_3,  KC_4,  KC_5,     KC_6,
+    KC_TAB, KC_GRAVE, KC_Q,  KC_W,  KC_E,  KC_R,     KC_T,
+                      KC_A,  KC_S,  KC_D,  KC_V,     KC_B,
+    KC_M, KC_ESCAPE,
+    KC_C,
+    KC_Z, KC_LSHIFT, KC_SPACE),
 };
 
 const uint16_t PROGMEM fn_actions[] = {
